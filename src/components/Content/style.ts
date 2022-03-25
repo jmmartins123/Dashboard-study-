@@ -5,4 +5,5 @@ export const Container = styled.div`
 
     background: ${props => props.theme.colors.primary};
     color: ${props => props.theme.colors.white};
+    padding: 1.5rem;
 `;

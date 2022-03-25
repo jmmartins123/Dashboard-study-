@@ -1,10 +1,10 @@
 import React from "react";
 import { Container } from "./style";
 
-export const Content: React.FC = () => {
+export const Content: React.FC = ({children}) => {
     return (
-        <Container>        
-            <h1>Hello Content</h1>
+        <Container>                    
+            {children}
         </Container>
     );
 }
