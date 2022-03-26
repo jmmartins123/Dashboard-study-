@@ -6,7 +6,7 @@ const Container = styled.div`
     background: ${props => props.theme.colors.secondary};    
     padding: 1.2rem 1.5rem;
 
-    border-right: 1px solid ${props => props.theme.colors.gray};
+    border-right: 1px solid ${props => props.theme.colors.gray};    
 `;
 
 const Header = styled.header `
@@ -29,6 +29,10 @@ const MenuContainer = styled.nav `
     display: flex;
     flex-direction: column; 
     gap: 1rem;
+
+    > a{
+        text-decoration: none;
+    } 
 `;
 
 const MenuItemLink = styled.a `

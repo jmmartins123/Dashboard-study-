@@ -15,6 +15,7 @@ import {
     MenuContainer,
     MenuItemLink
  } from "./style";
+import { Link } from "react-router-dom";
 
 export const Aside: React.FC = () => {
     return (
@@ -25,25 +26,33 @@ export const Aside: React.FC = () => {
             </Header>
 
             <MenuContainer>
-                <MenuItemLink href='#'>
-                    <MdDashboard />
-                    Dasboard
-                </MenuItemLink>  
+                <Link to = '/dashboard'>
+                    <MenuItemLink>
+                        <MdDashboard />
+                        Dasboard
+                    </MenuItemLink>  
+                </Link>
 
-                <MenuItemLink href='#'>
-                    <MdArrowDownward />
-                    Entradas
-                </MenuItemLink>  
+                <Link to = '/list/entry-balance'>
+                    <MenuItemLink>
+                        <MdArrowDownward />
+                        Entradas
+                    </MenuItemLink>  
+                </Link>
 
-                <MenuItemLink href='#'>
-                    <MdArrowUpward />
-                    Saídas
-                </MenuItemLink>  
+                <Link to = '/list/exit-balance'>
+                    <MenuItemLink>
+                        <MdArrowUpward />
+                        Saídas
+                    </MenuItemLink>  
+                </Link>
 
-                <MenuItemLink href='#'>
-                    <MdExitToApp />
-                    Sair
-                </MenuItemLink>  
+                <Link to = '/list/exit-balance'>
+                    <MenuItemLink>
+                        <MdExitToApp />
+                        Sair
+                    </MenuItemLink>  
+                </Link>
             </MenuContainer>
         </Container>
     );
