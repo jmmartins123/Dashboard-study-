@@ -29,7 +29,7 @@ const Filters = styled.div`
         display: block;
         margin: 0 auto;
         width: 4rem;
-        border-bottom: 0.8rem solid ${props => props.theme.colors.warning};
+        border-bottom: 0.8rem solid ${props => props.theme.colors.sucess};
     }
 
     .tag-filter-eventual::after{
@@ -37,7 +37,7 @@ const Filters = styled.div`
         display: block;
         margin: 0 auto;
         width: 4rem;
-        border-bottom: 0.8rem solid ${props => props.theme.colors.sucess};
+        border-bottom: 0.8rem solid ${props => props.theme.colors.warning};
     }
 `;
 

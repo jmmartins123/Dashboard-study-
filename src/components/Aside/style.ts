@@ -31,6 +31,7 @@ const MenuContainer = styled.nav `
     gap: 1rem;
 
     > a{
+        
         text-decoration: none;
     } 
 `;

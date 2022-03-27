@@ -18,6 +18,7 @@ import {
 import { Link } from "react-router-dom";
 
 export const Aside: React.FC = () => {
+
     return (
         <Container>        
             <Header>
@@ -25,34 +26,26 @@ export const Aside: React.FC = () => {
                 <Title>Minha Carteira</Title>
             </Header>
 
-            <MenuContainer>
-                <Link to = '/dashboard'>
-                    <MenuItemLink>
+            <MenuContainer>                
+                    <MenuItemLink href='/dashboard'>
                         <MdDashboard />
                         Dasboard
                     </MenuItemLink>  
-                </Link>
 
-                <Link to = '/list/entry-balance'>
-                    <MenuItemLink>
-                        <MdArrowDownward />
+                    <MenuItemLink href='/list/entry-balance'>
+                        <MdArrowUpward />
                         Entradas
                     </MenuItemLink>  
-                </Link>
 
-                <Link to = '/list/exit-balance'>
-                    <MenuItemLink>
-                        <MdArrowUpward />
+                    <MenuItemLink href='/list/exit-balance'>
+                        <MdArrowDownward />
                         Saídas
                     </MenuItemLink>  
-                </Link>
 
-                <Link to = '/list/exit-balance'>
-                    <MenuItemLink>
+                    <MenuItemLink href='/list/exit-balance'>
                         <MdExitToApp />
                         Sair
                     </MenuItemLink>  
-                </Link>
             </MenuContainer>
         </Container>
     );
