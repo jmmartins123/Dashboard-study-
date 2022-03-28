@@ -23,29 +23,42 @@ interface IData {
 }
 
 export const List: React.FC = () => {
-  const [date, setDate] = useState<IData[]>([]);
+  const [monthSelected, setMonthSelected] = useState<string>(String(new Date().getMonth() +1));
+  
+  const [yearSelected, setYearSelected] = useState<string>(String(new Date().getFullYear()));
+
+  const [data, setData] = useState<IData[]>([]);
 
   const { type } = useParams();  
-
-  useEffect(() => { 
-      const response = listDate.map( item => {
-        return {
-          id: String(Math.random () * date.length),
-          description: item.description,
-          amount: Number(item.amount),
-          frequency: item.frequency,
-          date: item.date,
-          tagColor: item.frequency === 'recorrente' ? '#4e41f0' : '#e44c4e'
-        }
-      })
-
-      setDate(response);      
-      
-  }, []);
-
-  const listDate = useMemo(() => {
+  
+  const listData = useMemo(() => {
     return type === 'entry-balance' ? gains : expenses;
   },[type]);
+
+  useEffect(() => { 
+
+    const filteredDate = listData.filter( item => {
+      const date = new Date(item.date);
+      const month =String(date.getMonth() +1);
+      const year = String(date.getFullYear());
+
+      return month === monthSelected && year === yearSelected;
+    });
+
+    const dataFormatted = filteredDate.map(item => {      
+      return {
+        id: String(new Date().getTime()) + item.amount,
+        description: item.description,
+        amount: Number(item.amount),
+        frequency: item.frequency,
+        date: item.date,
+        tagColor: item.frequency === 'recorrente' ? '#4e41f0' : '#e44c4e'
+      }
+    });
+
+    setData(dataFormatted);      
+      
+  },[listData, monthSelected, yearSelected, data.length]);
 
   const lineColor = useMemo(() => {
     return type === 'entry-balance' ? '#f7931b' : '#e44c4e'
@@ -56,23 +69,31 @@ export const List: React.FC = () => {
   }, [type]);
 
   const months = [
-    {value: 7, label: 'Julho'},      
-    {value: 8, label: 'Agosto'},   
-    {value: 9, label: 'Setembro'}  
+    {value: 1, label: 'Janeiro'},
+    {value: 2, label: 'Fevereiro'},
+    {value: 3, label: 'Março'},
+    {value: 4, label: 'Abril'},
+    {value: 5, label: 'Maio'},  
+    {value: 6, label: 'Junho'},  
+    {value: 7, label: 'Julho'},
   ]
 
   const years = [
-    {value: 2020, label: 2020},
+    {value: 2018, label: 2018},
     {value: 2019, label: 2019},   
-    {value: 2018, label: 2018}     
+    {value: 2020, label: 2020},
+    {value: 2021, label: 2021},
+    {value: 2022, label: 2022},
   ]
 
   return (
     <>        
       <Container>
         <ContentHeader title={title} lineColor={lineColor}>
-            <SelectInput options={months} />
-            <SelectInput options={years} />            
+            <SelectInput options={months} onChange={(e) => setMonthSelected(e.target.value)} defaultValue={monthSelected}/>                         
+            <SelectInput options={years} onChange={(e) => setYearSelected(e.target.value)} defaultValue={yearSelected} />                        
+            {/* Estou guardando meu valor sempre quando minha propriedade ser alterada */}
+            
           </ContentHeader>       
           <Filters>
           <button 
@@ -92,7 +113,7 @@ export const List: React.FC = () => {
 
         <Content>
           {
-            date.map(item => (
+            data.map(item => (
               <HistoryFinanceCard  
                 key={item.id}                       
                 tagColor={item.tagColor}
@@ -107,3 +128,7 @@ export const List: React.FC = () => {
     </>
   );
 }
+function iresponsefilter(iresponsefilter: any) {
+  throw new Error("Function not implemented.");
+}
+
