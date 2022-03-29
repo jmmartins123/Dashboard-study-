@@ -18,6 +18,7 @@ const Filters = styled.div`
         font-weight: 500;
         
         transition: opacity 0.3s;
+        opacity: 0.4;
 
         &:hover{
             opacity: 0.7;
@@ -39,6 +40,11 @@ const Filters = styled.div`
         width: 4rem;
         border-bottom: 0.8rem solid ${props => props.theme.colors.warning};
     }
+
+    .tag-actived{
+        opacity: 1;
+    }
+    
 `;
 
 

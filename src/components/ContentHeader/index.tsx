@@ -22,7 +22,9 @@ export const ContentHeader: React.FC<IContentHeaderProps> = ({
 
     return(
         <Container>
-            <TitleContainer liColor={lineColor}>
+            <TitleContainer 
+                liColor={lineColor}
+            >
                 <h1>{title}</h1>
             </TitleContainer>
             <Controllers>

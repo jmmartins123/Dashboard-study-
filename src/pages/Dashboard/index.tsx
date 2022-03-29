@@ -14,8 +14,14 @@ export const Dashboard: React.FC = () => {
   ]
     return (
       <Container>                
-          <ContentHeader title={"Dashboard"} lineColor="#f7931b">
-            <SelectInput options={options} onChange={() => {}}/>
+          <ContentHeader 
+            title={"Dashboard"} 
+            lineColor="#f7931b"
+          >
+            <SelectInput 
+              options={options} 
+              onChange={() => {}}
+            />
           </ContentHeader>                          
       </Container>
     );

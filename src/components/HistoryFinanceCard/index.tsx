@@ -24,7 +24,9 @@ export const HistoryFinanceCard: React.FC<IHistoryFinanceCard> = ({
     return(
         <>
             <Container>
-                <Tag color={tagColor}/>
+                <Tag 
+                    color={tagColor}
+                />
                 <ContentCard>
                     <SpanTitle>{title}</SpanTitle>
                     <SpanSubtitle>
