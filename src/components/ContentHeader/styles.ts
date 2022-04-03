@@ -9,6 +9,7 @@ const Container = styled.div`
     
     display: flex;
     justify-content: space-between;   
+    
     margin-bottom: 1.8rem; 
    
 `;
@@ -20,7 +21,9 @@ const TitleContainer = styled.div<ITitleContainer>`
         &::after{
             content: '';            
             display: block;
+
             width: 3.43rem;
+
             border-bottom: 0.6rem solid ${props => props.liColor};
         }
     }
@@ -28,9 +31,9 @@ const TitleContainer = styled.div<ITitleContainer>`
 
 const Controllers = styled.div`
     display: flex;
-    gap: 0.4rem;    
-    justify-content: center;
     align-items: center;
+    justify-content: center;
+    gap: 0.4rem;    
 `;
 
 export {

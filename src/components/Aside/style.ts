@@ -3,7 +3,8 @@ import styled from "styled-components";
 const Container = styled.div`
     grid-area: AS;
 
-    background: ${props => props.theme.colors.secondary};    
+    background: ${props => props.theme.colors.secondary};   
+
     padding: 1.2rem 1.5rem;
 
     border-right: 1px solid ${props => props.theme.colors.gray};    
@@ -21,28 +22,32 @@ const LogoImg = styled.img`
 
 const Title = styled.h3`
     color: ${props => props.theme.colors.white};
+
     padding-left: 1rem;
 `;
 
 const MenuContainer = styled.nav `
-    margin-top: 3.5rem;     
+    margin-top: 3.5rem;   
+      
+
     display: flex;
     flex-direction: column; 
     gap: 1rem;
 
-    > a{
-        
+    > a{        
         text-decoration: none;
     } 
 `;
 
 const MenuItemLink = styled.a `
     color: ${props => props.theme.colors.info};
+
     text-decoration: none;
-    transition: opacity .3s;
+    
     display: flex;
     align-items: center;
-
+    
+    transition: opacity .3s;
     &:hover{
         opacity: .7;
     }

@@ -7,10 +7,13 @@ const PrincipalContainer = styled.div`
     grid-area: MH;
     
     background: ${props => props.theme.colors.secondary};
+
     display: flex;
     justify-content: space-between;
     align-items: center;
+
     padding: 0 1rem;
+    
     border-bottom: 1px solid ${props => props.theme.colors.gray}; 
 `;
 
