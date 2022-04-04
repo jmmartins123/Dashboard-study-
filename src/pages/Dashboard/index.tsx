@@ -4,7 +4,8 @@ import { ContentHeader } from "../../components/ContentHeader";
 import { SelectInput } from "../../components/SelectInput";
 import { CardResume } from "../../components/CardResume"; 
 import { MensagerBox } from "../../components/MensagerBox";
-import { PieChart } from "../../components/PieChart";
+import { PieChartBox } from "../../components/PieChartBox";
+import { HistoryBox } from "../../components/HistoryBox";
 
 import gains from '../../repositories/gains';
 import expenses from '../../repositories/expenses';
@@ -154,7 +155,54 @@ export const Dashboard: React.FC = () => {
 
     return data;
 
-  }, [totalGains,totalExpenses])
+  }, [totalGains,totalExpenses]);
+
+  const historyData = useMemo(() => {
+
+    return listOfMonths
+    .map((_, month) => {
+        
+      let amountEntry = 0;
+
+      gains.forEach(gain => {
+        const date = new Date(gain.date);
+        const gainMonth = date.getMonth();
+        const gainYear = date.getFullYear();
+
+        if(gainMonth === month && gainYear === yearSelected){
+          try{
+              amountEntry += Number(gain.amount);
+          }catch{
+              throw new Error('amountEntry is invalid. amountEntry must be valid number.')
+          }
+        }
+      });   
+
+      let amountOutput = 0;
+
+      expenses.forEach(expense => {
+        const date = new Date(expense.date);
+        const expenseMonth = date.getMonth();
+        const expenseYear = date.getFullYear();
+
+        if(expenseMonth === month && expenseYear === yearSelected){
+          try{
+              amountOutput += Number(expense.amount);
+          }catch{
+              throw new Error('amountOutput is invalid. amountOutput must be valid number.')
+          }
+        }
+      });
+
+
+      return {
+        monthNumber: month,
+        month: listOfMonths[month].substr(0, 3),
+        amountEntry,
+        amountOutput
+      }
+    })    
+  },[yearSelected]);
 
   const handleMonthSelected = (month: string) => {
     try{
@@ -223,11 +271,20 @@ export const Dashboard: React.FC = () => {
             <MensagerBox 
               title={message.title}
               description={message.description}
+              
               footertext={message.footertext}
               icon={message.icon} 
             />          
 
-            <PieChart data={relationExpensesvsGains} /> 
+            <PieChartBox 
+              data={relationExpensesvsGains} 
+            /> 
+
+            <HistoryBox 
+              data={historyData} 
+              lineColorAmountEntry="#F7931B"
+              lineColorAmountOutout="#E44C4E"
+            />
                 
           </Content>      
  

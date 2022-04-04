@@ -5,12 +5,6 @@ import React, {
 } from "react";
 import { useParams } from 'react-router-dom';
 
-import { 
-  Container,
-  Content,
-  Filters,  
-} from "./styles";
-
 import { ContentHeader } from "../../components/ContentHeader";
 import { HistoryFinanceCard } from "../../components/HistoryFinanceCard";
 import { SelectInput } from "../../components/SelectInput";
@@ -18,6 +12,13 @@ import { SelectInput } from "../../components/SelectInput";
 import listOfMonths from '../../utils/months';
 import gains from '../../repositories/gains';
 import expenses from '../../repositories/expenses';
+
+import { 
+  Container,
+  Content,
+  Filters,  
+} from "./styles";
+
 
 interface IData {
   id: string;

@@ -38,14 +38,14 @@ const Small = styled.small`
 `;
 
 const Image = styled.img`
-
     position: absolute;
-       
+
     height: 110%;
-    top: -0.6rem;
+
     right: -1.87rem;
- 
-    opacity: .3;    
+    top: -0.6rem;
+       
+    opacity: .4;
 `;
 
 export {

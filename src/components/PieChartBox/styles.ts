@@ -31,7 +31,7 @@ const LegendContainer = styled.ul`
     
     padding-right: 1.2rem;
 
-    height: 8.7rem;
+    height: 10.93rem;
     overflow-y: scroll;
 
     ::-webkit-scrollbar{
@@ -54,13 +54,13 @@ const Legend = styled.li`
 const NumberTitle = styled.h4<ILegendProps>`
     background-color: ${props => props.color};
 
-    width: 2.5rem;
+    width: 3rem;
     height: 2.5rem;
 
     border-radius: 0.31rem;
     line-height: 2.5rem;
 
-    font-size: 1.1rem;
+    font-size: 0.9rem;
     text-align: center;
 `;
 
@@ -69,6 +69,9 @@ const Description = styled.h4`
 `;
 
 const SideRigth = styled.main`   
+    display: flex;    
+    flex: 1;
+    justify-content: center;
 `;
 
 export { 
