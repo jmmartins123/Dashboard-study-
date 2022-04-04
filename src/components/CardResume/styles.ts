@@ -5,21 +5,53 @@ interface IContainerProps{
 }
 
 const Container = styled.div<IContainerProps>`
-    background-color: ${props => props.color}
+    background-color: ${props => props.color};
+    color: ${props => props.theme.colors.white};
+
+    width: 32%;
+    height: 12rem;
+    
+    margin: 0.8rem 0rem;
+    padding: 0.7rem 1.25rem;
+
+    border-radius: 0.4rem;
+
+    position: relative;
+
+    overflow: hidden;    
 `;
 
-const Title = styled.span``;
+const Title = styled.span`    
+    font-size: 1.20rem;
+    font-weight: 500;
+`;
 
-const Amount = styled.h1``;
+const Money = styled.h1`
+ 
+`;
 
-const Small = styled.small``;
+const Small = styled.small`
+    font-size: 0.6rem;
+    position: absolute;
 
-const Image = styled.img``;
+    bottom: 0.6rem;
+`;
+
+const Image = styled.img`
+
+    position: absolute;
+       
+    height: 110%;
+    top: -0.6rem;
+    right: -1.87rem;
+ 
+    opacity: .3;    
+`;
 
 export {
     Container,
     Title,
-    Amount,
+    Money,
     Small,
     Image
 }

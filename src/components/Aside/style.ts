@@ -27,8 +27,7 @@ const Title = styled.h3`
 `;
 
 const MenuContainer = styled.nav `
-    margin-top: 3.5rem;   
-      
+    margin-top: 3.5rem;         
 
     display: flex;
     flex-direction: column; 

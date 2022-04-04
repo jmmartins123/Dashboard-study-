@@ -1,13 +1,19 @@
 import React, { useMemo, useState } from "react";
+
 import { ContentHeader } from "../../components/ContentHeader";
 import { SelectInput } from "../../components/SelectInput";
+import { CardResume } from "../../components/CardResume"; 
+import { MensagerBox } from "../../components/MensagerBox";
+import { PieChart } from "../../components/PieChart";
+
 import gains from '../../repositories/gains';
 import expenses from '../../repositories/expenses';
 import listOfMonths from '../../utils/months';
-import { 
-  CardResume,
-  
-} from "../../components/CardResume";
+
+import happyImg from '../../assets/happy.svg'
+import sadImg from '../../assets/sad.svg'
+import ufaImg from '../../assets/grinning.svg'
+
 import { 
   Container, Content
 } from "./styles";
@@ -45,12 +51,117 @@ export const Dashboard: React.FC = () => {
       })
   },[]);
 
+  const totalExpenses = useMemo(() => {
+    let total: number = 0;
+
+    expenses.forEach(item => {
+      const date = new Date(item.date);
+      const year = date.getFullYear();
+      const month = date.getMonth() + 1;
+
+      if(month === monthSelected && year === yearSelected){
+        try{
+          total += Number (item.amount);
+
+        }catch{
+          throw new Error('Invalid amount! Amount must be nunber.')
+        }
+      }
+    });
+    
+    return total;
+
+  },[monthSelected, yearSelected]);
+
+  const totalGains = useMemo(() => {
+    let total: number = 0;
+
+    gains.forEach(item => {
+      const date = new Date(item.date);
+      const year = date.getFullYear();
+      const month = date.getMonth() + 1;
+
+      if(month === monthSelected && year === yearSelected){
+        try{
+          total += Number (item.amount);
+
+        }catch{
+          throw new Error('Invalid amount! Amount must be nunber.')
+        }
+      }
+    });
+    
+    return total;
+
+  },[monthSelected, yearSelected]);
+
+  const totalBalance = useMemo(() => {
+    return totalGains - totalExpenses;    
+
+  },[totalGains,totalExpenses]);
+
+  const message = useMemo(() => {
+    if(totalBalance < 0){
+      return{
+        title: "Que triste!",
+        description: "Neste mês, você gastou mais do que deveria.",
+        footertext: "Verifique seus gastos e tente reduzí-los no próximo mês." ,
+        icon: sadImg
+      }      
+    }
+
+    else if(totalBalance === 0){
+      return{
+        title: "Ufaa!",
+        description: "Neste mês, você gastou extamente o que ganhou.",
+        footertext: "Tenha cuidado." ,
+        icon: ufaImg
+      }
+    }
+
+    else{
+      return{
+        title: "Muito bem!",
+        description: "Sua carteira está positiva!" ,
+        footertext: "Continue assim. Considere investir o seu saldo" ,
+        icon: happyImg
+      }
+    }
+
+  }, [totalBalance]);
+
+  const relationExpensesvsGains = useMemo(() => {
+    const total = totalGains + totalExpenses;
+
+    const percentGains = (totalGains / total) * 100; 
+    const percentExpenses = (totalExpenses / total) * 100; 
+
+    const data = [
+      {
+        name: "Entradas",
+        value: totalGains,
+        percent: Number(percentGains.toFixed(1)),
+        color: "#f7931b"
+      },
+      {
+        name: "Saídas",
+        value: totalExpenses,
+        percent: Number(percentExpenses.toFixed(1)),
+        color: "#e44c4e"
+      }
+
+    ];
+
+    return data;
+
+  }, [totalGains,totalExpenses])
+
   const handleMonthSelected = (month: string) => {
     try{
       const paserMonth = Number(month);
       setMonthSelected(paserMonth)
     } 
-    catch(error){
+    catch{
       throw new Error('invalid month value. Is accept 0 - 24.')
     }
   }
@@ -60,7 +171,7 @@ export const Dashboard: React.FC = () => {
       const paserYear= Number(year);
       setYearSelected(paserYear)
     } 
-    catch(error){
+    catch{
       throw new Error('invalid month value. Is accept interger numbers.')
     }
   }
@@ -87,28 +198,39 @@ export const Dashboard: React.FC = () => {
           <Content>
             <CardResume 
               title="Saldo"
-              amount={150.00} 
+              amount={totalBalance} 
               footerlabel="atualizado com base nas entradas e saídas"
-              image="dolar"
+              icon="dolar"
               color="#4e41f0"
             />
 
             <CardResume 
               title="Entradas"
-              amount={5000.00} 
+              amount={totalGains} 
               footerlabel="atualizado com base nas entradas e saídas"
-              image="arrowUp"
+              icon="arrowUp"
               color="#f7931b"           
             />
 
             <CardResume 
-              title="Saldo"
-              amount={4850.00} 
+              title="Saídas"
+              amount={totalExpenses} 
               footerlabel="atualizado com base nas entradas e saídas"
-              image="arrowDown"
+              icon="arrowDown"
               color="#e44c4e"
             />
-          </Content>                         
+
+            <MensagerBox 
+              title={message.title}
+              description={message.description}
+              footertext={message.footertext}
+              icon={message.icon} 
+            />          
+
+            <PieChart data={relationExpensesvsGains} /> 
+                
+          </Content>      
+ 
       </Container>
     );
 }
