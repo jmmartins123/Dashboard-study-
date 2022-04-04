@@ -5,12 +5,17 @@ import {
     Line,
     XAxis,
     CartesianGrid,
-    Tooltip
+    Tooltip,
+    Legend
 } from "recharts";
 
 import {         
     Container, 
-    Title 
+    Title,
+    ChartContainer,
+    Header,
+    LegendContainer,
+    LegendItem
 } from "./styles";
 
 interface IHostoryBoxProps{
@@ -30,42 +35,52 @@ const HistoryBox: React.FC<IHostoryBoxProps> = ({
     lineColorAmountOutout
 }) => (
     <Container>
-        <Title>
-            Histórico de saldo!
-        </Title>
+        <Header>
+            <Title>
+                Histórico de saldo!
+            </Title>
 
-        <ResponsiveContainer>
-            <LineChart 
-                data={data}
-                margin={{top: 5, right: 20, left: 20, bottom: 5}}
-            >
-                <CartesianGrid strokeDasharray="3 3" stroke="#cecece"/>
-                <XAxis 
-                    dataKey="month" 
-                    stroke="#cecece" 
-                />
-                <Tooltip />
-                <Line 
-                    dataKey="amountEntry"
-                    type="monotone"
-                    name="Entradas"
-                    stroke={lineColorAmountEntry}
-                    strokeWidth={5}
-                    dot={{r: 5}} //raio da bolinha
-                    activeDot={{r: 8}} //raio da bolinha ativa
-                />
-             
-                <Line 
-                    dataKey="amountOutput"
-                    type="monotone"
-                    name="Saídas"
-                    stroke={lineColorAmountOutout}
-                    strokeWidth={5}
-                    dot={{r: 5}} //raio da bolinha
-                    activeDot={{r: 8}} //raio da bolinha ativa
-                />                
-            </LineChart>
-        </ResponsiveContainer>
+            <LegendContainer>
+                <LegendItem>
+
+                </LegendItem>
+            </LegendContainer>
+        </Header>
+
+        <ChartContainer>
+            <ResponsiveContainer>
+                <LineChart 
+                    data={data}
+                    margin={{top: 5, right: 20, left: 20, bottom: 5}}
+                >
+                    <CartesianGrid strokeDasharray="3 3" stroke="#cecece"/>
+                    <XAxis 
+                        dataKey="month" 
+                        stroke="#cecece" 
+                    />
+                    <Tooltip />
+                    <Line 
+                        dataKey="amountEntry"
+                        type="monotone"
+                        name="Entradas"
+                        stroke={lineColorAmountEntry}
+                        strokeWidth={5}
+                        dot={{r: 5}} //raio da bolinha
+                        activeDot={{r: 8}} //raio da bolinha ativa
+                    />
+                
+                    <Line 
+                        dataKey="amountOutput"
+                        type="monotone"
+                        name="Saídas"
+                        stroke={lineColorAmountOutout}
+                        strokeWidth={5}
+                        dot={{r: 5}} //raio da bolinha
+                        activeDot={{r: 8}} //raio da bolinha ativa
+                    />                
+                </LineChart>
+            </ResponsiveContainer>
+        </ChartContainer>
     </Container>
 )   
 
