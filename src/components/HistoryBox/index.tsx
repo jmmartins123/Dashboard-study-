@@ -9,13 +9,17 @@ import {
     Legend
 } from "recharts";
 
+import formatCurrency from "../../utils/formatCurrency";
+
 import {         
     Container, 
     Title,
     ChartContainer,
     Header,
     LegendContainer,
-    LegendItem
+    LegendItem,
+    Card,
+    Span
 } from "./styles";
 
 interface IHostoryBoxProps{
@@ -42,7 +46,17 @@ const HistoryBox: React.FC<IHostoryBoxProps> = ({
 
             <LegendContainer>
                 <LegendItem>
+                    <Card
+                        color={lineColorAmountEntry}
+                    />                                            
+                    <Span>Entradas</Span>
+                </LegendItem>
 
+                <LegendItem>
+                    <Card
+                        color={lineColorAmountOutout}
+                    />                                            
+                    <Span>Saídas</Span>
                 </LegendItem>
             </LegendContainer>
         </Header>
@@ -58,7 +72,9 @@ const HistoryBox: React.FC<IHostoryBoxProps> = ({
                         dataKey="month" 
                         stroke="#cecece" 
                     />
-                    <Tooltip />
+                    <Tooltip
+                        formatter={(value: number) => formatCurrency(Number(value))}
+                    />
                     <Line 
                         dataKey="amountEntry"
                         type="monotone"
