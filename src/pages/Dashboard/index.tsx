@@ -12,9 +12,10 @@ import gains from '../../repositories/gains';
 import expenses from '../../repositories/expenses';
 import listOfMonths from '../../utils/months';
 
-import happyImg from '../../assets/happy.svg'
-import sadImg from '../../assets/sad.svg'
-import ufaImg from '../../assets/grinning.svg'
+import happyImg from '../../assets/party.png'
+import sadImg from '../../assets/crying.png'
+import hmImg from '../../assets/expressionless.png'
+import ufaImg from '../../assets/sweat.png'
 
 import { 
   Container, Content
@@ -110,6 +111,15 @@ export const Dashboard: React.FC = () => {
         footertext: "Verifique seus gastos e tente reduzí-los no próximo mês." ,
         icon: sadImg
       }      
+    }
+
+    else if(totalGains === 0 && totalExpenses === 0){
+      return{
+        title: "Op's!",
+        description: "Neste mês, você não cadastros seus gastos.",
+        footertext: "Nenhum registro encontrado." ,
+        icon: hmImg
+      }
     }
 
     else if(totalBalance === 0){
