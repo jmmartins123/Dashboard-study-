@@ -15,38 +15,34 @@ import {
     MenuContainer,
     MenuItemLink
  } from "./style";
-import { Link } from "react-router-dom";
 
-export const Aside: React.FC = () => {
+export const Aside: React.FC = () => (
+    <Container>        
+        <Header>
+            <LogoImg src={logoImg} alt='Logo Minha Carteira' />
+            <Title>Minha Carteira</Title>
+        </Header>
 
-    return (
-        <Container>        
-            <Header>
-                <LogoImg src={logoImg} alt='Logo Minha Carteira' />
-                <Title>Minha Carteira</Title>
-            </Header>
+        <MenuContainer>                
+                <MenuItemLink href='/'>
+                    <MdDashboard />
+                    Dasboard
+                </MenuItemLink>  
 
-            <MenuContainer>                
-                    <MenuItemLink href='/'>
-                        <MdDashboard />
-                        Dasboard
-                    </MenuItemLink>  
+                <MenuItemLink href='/list/entry-balance'>
+                    <MdArrowUpward />
+                    Entradas
+                </MenuItemLink>  
 
-                    <MenuItemLink href='/list/entry-balance'>
-                        <MdArrowUpward />
-                        Entradas
-                    </MenuItemLink>  
+                <MenuItemLink href='/list/exit-balance'>
+                    <MdArrowDownward />
+                    Saídas
+                </MenuItemLink>  
 
-                    <MenuItemLink href='/list/exit-balance'>
-                        <MdArrowDownward />
-                        Saídas
-                    </MenuItemLink>  
-
-                    <MenuItemLink href='/list/exit-balance'>
-                        <MdExitToApp />
-                        Sair
-                    </MenuItemLink>  
-            </MenuContainer>
-        </Container>
+                <MenuItemLink href='/list/exit-balance'>
+                    <MdExitToApp />
+                    Sair
+                </MenuItemLink>  
+        </MenuContainer>
+    </Container>
     );
-}

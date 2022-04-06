@@ -20,27 +20,23 @@ export const HistoryFinanceCard: React.FC<IHistoryFinanceCard> = ({
     title,
     subtitle,
     amount
-}) => {
-    return(
-        <>
-            <Container>
-                <Tag 
-                    color={tagColor}
-                />
-                <ContentCard>
-                    <SpanTitle>{title}</SpanTitle>
-                    <SpanSubtitle>
-                        {new Intl.DateTimeFormat('pt-BR')
-                        .format(new Date(subtitle))}
-                    </SpanSubtitle>
-                </ContentCard>
-                <ValueReal>
-                    {new Intl.NumberFormat ('pt-BR', {
-                        style: 'currency',
-                        currency: 'BRL'
-                    }).format(amount)}
-                </ValueReal>
-            </Container>
-        </> 
-    );
-}
+}) => (
+    <Container>
+        <Tag 
+            color={tagColor}
+        />
+        <ContentCard>
+            <SpanTitle>{title}</SpanTitle>
+            <SpanSubtitle>
+                {new Intl.DateTimeFormat('pt-BR')
+                .format(new Date(subtitle))}
+            </SpanSubtitle>
+        </ContentCard>
+        <ValueReal>
+            {new Intl.NumberFormat ('pt-BR', {
+                style: 'currency',
+                currency: 'BRL'
+            }).format(amount)}
+        </ValueReal>
+    </Container>    
+);

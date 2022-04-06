@@ -20,22 +20,20 @@ const MensagerBox: React.FC<IMensagerProps> = ({
     description,
     footertext,
     icon
-}) => {
-    return(
-        <Container>
-           <Header>
-                <Title> {title} 
-                   <Image src={icon} alt={title}/>
-                </Title>
-                <Text>
-                   {description}
-                </Text>
-            </Header>
-            <Footer>                        
-                {footertext}                   
-            </Footer>          
-        </Container>
-    );
-}
+}) => (
+    <Container>
+        <Header>
+            <Title> {title} 
+                <Image src={icon} alt={title}/>
+            </Title>
+            <Text>
+                {description}
+            </Text>
+        </Header>
+        <Footer>                        
+            {footertext}                   
+        </Footer>          
+    </Container>
+);
 
 export { MensagerBox }
