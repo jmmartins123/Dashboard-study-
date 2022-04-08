@@ -33,7 +33,7 @@ const Signin: React.FC = () => {
     i_Senha: '',   
     i_Email: '',
   });
-  const [hiddenSenha, setHiddenSenha] = useState(false);
+  const [hiddenSenha, setHiddenSenha] = useState(true);
 
   const handleChange = ((e: ChangeEvent<HTMLInputElement>) => {
     setDados({
@@ -74,8 +74,8 @@ const Signin: React.FC = () => {
               name="i_Senha"
               label="Senha"
               variant="outlined"
-              onChange={handleChange}
               fullWidth
+              onChange={handleChange}
               value={dados.i_Senha}
               validators={[
                 ValidationTypes.Required,
@@ -96,7 +96,7 @@ const Signin: React.FC = () => {
                   <IconButton                    
                     onClick={() => setHiddenSenha(!hiddenSenha)}                            
                   >
-                    {hiddenSenha ? <VisibilityOff />  : <Visibility />}
+                    {hiddenSenha ? <VisibilityOff /> : <Visibility />}
                     </IconButton>
                   </InputAdornment>                 
                                                                                                       

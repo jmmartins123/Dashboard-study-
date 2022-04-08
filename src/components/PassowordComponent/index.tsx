@@ -32,13 +32,9 @@ const PasswordInput: React.FC<IPasswordInput> = ({
             <InputAdornment position="end" className="passwordInput">
                 <IconButton>
                     {hiddenSenha ? (
-                    <VisibilityOffIcon 
-                        className='icon'
-                    />
+                    <VisibilityOffIcon />
                     ) : (
-                    <VisibilityIcon 
-                        className='icon'
-                    />
+                    <VisibilityIcon />
                     )}
                 </IconButton>                
                 
