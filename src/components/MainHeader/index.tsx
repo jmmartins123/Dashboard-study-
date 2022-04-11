@@ -3,14 +3,14 @@
 
 import React, {useMemo, useState}from "react";
 import emojis from "../../utils/emojis";
-import { Toggle } from "../Toggle";
 import { useTheme } from "../hooks/theme";
+import { Toggle } from "../Toggle";
 
 import {     
     PrincipalContainer,
     Profile,
     Welcome,
-    UserName
+    UserName,    
 } from "./style";
 
 export const MainHeader: React.FC = () => {

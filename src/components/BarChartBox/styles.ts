@@ -29,7 +29,7 @@ const Container = styled.div`
 
 const SideLeft = styled.aside`    
     display: flex;
-    flex-direction: column;        
+    flex-direction: column;          
 `;
 
 const Title = styled.h2`
@@ -72,13 +72,14 @@ const LegendContainer = styled.ul`
         background-color: ${props => props.theme.colors.secondary};
         border-radius: 0.8rem;
     }     
+    
 `;
 
 const Legend = styled.li`
     display: flex;
     align-items: center;
 
-    margin-bottom: 0.7rem;    
+    margin-bottom: 0.7rem;      
 `;
 
 const NumberTitle = styled.h4<ILegendProps>`

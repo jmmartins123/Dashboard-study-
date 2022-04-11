@@ -27,9 +27,10 @@ const Welcome = styled.h3`
 const UserName = styled.span`
 `;
 
+
 export {
     PrincipalContainer,  
     Profile,
     Welcome,  
-    UserName
+    UserName,    
 }

@@ -1,29 +1,65 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
-const Container = styled.div`
+interface IContainerPRops{
+    menuIsOpen: boolean;
+}
+
+interface IThemeFooterProps{
+    menuIsOpen: boolean;
+}
+
+const Container = styled.div<IContainerPRops>`
     grid-area: AS;
 
     background: ${props => props.theme.colors.secondary};   
 
     padding: 1.2rem 1.5rem;
 
-    border-right: 1px solid ${props => props.theme.colors.gray};    
+    border-right: 1px solid ${props => props.theme.colors.gray};
+    
+    position: relative;       
+
+    @media(max-width: 600px){
+        padding-left: 0.47rem;
+        position: fixed;
+        z-index: 2;
+        width: 12rem;  
+
+        height: ${props => props.menuIsOpen ? '100vh' : '70px'};
+        overflow-y: hidden;
+
+       ${props => !props.menuIsOpen && css`
+        border: none;
+        border-bottom: 1px solid ${props => props.theme.colors.gray};
+       `};    
+    }    
 `;
+
+//O menu recebe uma propriedade onde quando estiver aberto ocupará 
+// 100vh e para isso, é necessário passar essa propriedade para funcionar perfeitamente.
 
 const Header = styled.header `
     display: flex;
-    align-items: center;
+    align-items: center;   
 `;
 
 const LogoImg = styled.img`
     width: 2rem;
     height: 2rem;
+
+    @media(max-width: 600px){
+       display: none;
+    }
 `;
 
 const Title = styled.h3`
     color: ${props => props.theme.colors.white};
 
     padding-left: 1rem;
+
+    @media(max-width: 600px){
+       display: none;
+    }
 `;
 
 const MenuContainer = styled.nav `
@@ -36,6 +72,10 @@ const MenuContainer = styled.nav `
     > a{        
         text-decoration: none;
     } 
+
+    @media(max-width: 600px){
+       gap: 4rem;
+    }
 `;
 
 const MenuItemLink = styled.a `
@@ -79,6 +119,41 @@ const MenuItemButton= styled.button `
     }
 `;
 
+const ToggleMenu = styled.button`
+    width: 2.5rem;
+    height: 2.5rem;
+
+    border-radius: 0.47rem;
+    font-size: 1.37rem;
+
+    background-color: ${props => props.theme.colors.warning};
+    color: ${props => props.theme.colors.white};
+
+    transition: opacity 0.3s;
+
+    :hover{
+        opacity: 0.7;
+    }
+
+    display: none;   
+
+    @media(max-width: 600px){
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+`;
+
+const ToggleFotter = styled.footer<IThemeFooterProps>`
+    display: none;
+    position: absolute;
+    bottom:2rem;
+    left: 1.5rem;
+
+    @media(max-width: 470px){
+        display: ${props => props.menuIsOpen ? 'flex' : 'none'};
+    }
+`;
 
 export {
     Container,
@@ -87,5 +162,7 @@ export {
     Title,
     MenuContainer,
     MenuItemLink,
-    MenuItemButton
+    MenuItemButton,
+    ToggleMenu,  
+    ToggleFotter  
 }

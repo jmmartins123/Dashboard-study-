@@ -11,7 +11,10 @@ const Container = styled.div`
     justify-content: space-between;   
     
     margin-bottom: 1.8rem; 
-   
+
+    @media(max-width: 600px){
+        display: block;                   
+    }
 `;
 
 const TitleContainer = styled.div<ITitleContainer>`
@@ -33,7 +36,14 @@ const Controllers = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 0.4rem;    
+    gap: 0.4rem; 
+    
+    @media(max-width: 600px){
+        display: flex;        
+        margin-top: 2rem;  
+                
+        justify-content: left;
+    }
 `;
 
 export {
