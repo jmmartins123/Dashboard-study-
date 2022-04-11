@@ -1,8 +1,9 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 
 interface ITagProps{
     color: string;
 }
+
 
 const Container = styled.li`
     background-color: ${props => props.theme.colors.tertiary};
@@ -21,6 +22,7 @@ const Container = styled.li`
     position: relative;
 
     transition: 0.3s;
+
     &:hover{
         opacity: 0.8;
         transform: translateX(0.8rem);        

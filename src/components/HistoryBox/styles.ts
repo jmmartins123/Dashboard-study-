@@ -1,9 +1,22 @@
-import { StringDecoder } from "string_decoder";
-import styled from "styled-components";
+import styled, { keyframes } from 'styled-components';
 
 interface IColorProps{
     color: string;
 }
+
+const animate = keyframes`
+    0%{
+        transform: translateX(-100px);
+        opacity: 0;
+    }    
+    50%{      
+        opacity: 0.3;
+    }    
+    100%{
+        transform: translateX(0);
+        opacity: 1;
+    }    
+`;
 
 const Container = styled.div`
     width: 100%;     
@@ -21,6 +34,8 @@ const Container = styled.div`
     border-radius: 0.5rem;
 
     overflow-x: hidden;
+
+    animation: ${animate} .5s;
 `;
 
 const Title = styled.h2`
