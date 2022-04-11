@@ -5,6 +5,7 @@ const Button = styled.button`
 
     margin: 0.45rem 0;
     padding: 1.1rem;
+    margin-top: 2rem;
 
     border-radius: 0.4rem;
 

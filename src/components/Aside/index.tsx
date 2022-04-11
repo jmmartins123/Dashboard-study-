@@ -7,42 +7,51 @@ import {
     MdExitToApp
 } from 'react-icons/md'
 
+import { useAuth } from '../hooks/auth'
+
 import { 
     Container,
     Header,
     LogoImg,
     Title,
     MenuContainer,
-    MenuItemLink
+    MenuItemLink,
+    MenuItemButton
  } from "./style";
 
-export const Aside: React.FC = () => (
-    <Container>        
-        <Header>
-            <LogoImg src={logoImg} alt='Logo Minha Carteira' />
-            <Title>Minha Carteira</Title>
-        </Header>
+export const Aside: React.FC = () => {
+    const { signOut } = useAuth();
 
-        <MenuContainer>                
-                <MenuItemLink href='/'>
-                    <MdDashboard />
-                    Dasboard
-                </MenuItemLink>  
+    return (
+        <Container>        
+            <Header>
+                <LogoImg src={logoImg} alt='Logo Minha Carteira' />
+                <Title>Minha Carteira</Title>
+            </Header>
 
-                <MenuItemLink href='/list/entry-balance'>
-                    <MdArrowUpward />
-                    Entradas
-                </MenuItemLink>  
+            <MenuContainer>                
+                    <MenuItemLink href='/'>
+                        <MdDashboard />
+                        Dasboard
+                    </MenuItemLink>  
 
-                <MenuItemLink href='/list/exit-balance'>
-                    <MdArrowDownward />
-                    Saídas
-                </MenuItemLink>  
+                    <MenuItemLink href='/list/entry-balance'>
+                        <MdArrowUpward />
+                        Entradas
+                    </MenuItemLink>  
 
-                <MenuItemLink href='/list/exit-balance'>
-                    <MdExitToApp />
-                    Sair
-                </MenuItemLink>  
-        </MenuContainer>
-    </Container>
+                    <MenuItemLink href='/list/exit-balance'>
+                        <MdArrowDownward />
+                        Saídas
+                    </MenuItemLink>  
+
+                    <MenuItemButton 
+                        onClick = {signOut}
+                    >
+                        <MdExitToApp />
+                        Sair
+                    </MenuItemButton>  
+            </MenuContainer>
+        </Container>
     );
+}

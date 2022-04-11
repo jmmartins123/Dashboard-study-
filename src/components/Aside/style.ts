@@ -57,6 +57,28 @@ const MenuItemLink = styled.a `
     }
 `;
 
+const MenuItemButton= styled.button `
+    color: ${props => props.theme.colors.info};
+    background: transparent;
+
+    text-decoration: none;
+
+    font-size: 1rem;
+    
+    display: flex;
+    align-items: center;
+    
+    transition: opacity .3s;
+    &:hover{
+        opacity: .7;
+    }
+
+    > svg{
+        font-size: 1.2rem;
+        margin-right: 0.8rem;
+    }
+`;
+
 
 export {
     Container,
@@ -64,5 +86,6 @@ export {
     LogoImg,
     Title,
     MenuContainer,
-    MenuItemLink
+    MenuItemLink,
+    MenuItemButton
 }

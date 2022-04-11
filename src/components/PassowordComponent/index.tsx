@@ -11,7 +11,7 @@ interface IPasswordInput{
     validators?: any
     errorMessages?: any
     label:string
-    onChange(e: ChangeEvent<HTMLInputElement>): void;
+    onChange(e: ChangeEvent<HTMLInputElement>): void;  
     onClick: void
 }
 

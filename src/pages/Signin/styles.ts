@@ -30,18 +30,18 @@ const Title = styled.h2`
 `;
 
 const Form = styled.form`  
-    width: 300px;
+    width: 350px;
     height: 350px;
 
     padding: 1.87rem;
 
     border-radius: 0.7rem;
 
-    background-color: ${props => props.theme.colors.white};          
+    background-color: ${props => props.theme.colors.tertiary};          
 `;
 
 const FormTitle = styled.h1`  
-    color: ${props => props.theme.colors.black}; 
+    color: ${props => props.theme.colors.white}; 
 
     ::after{
         content: '';

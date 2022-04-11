@@ -1,17 +1,15 @@
 import React, {useRef, useState, ChangeEvent}from "react";
 import LogoImg from '../../assets/logo.svg';
 
-import { ValidatorForm } from "react-material-ui-form-validator";
-import { TextInput } from "../../components/InputComponent";
-import { VisibilityOff,Visibility } from "@mui/icons-material";
+// import { VisibilityOff,Visibility, Password } from "@mui/icons-material";
+// import { ValidationTypes } from "../../components/Config/ValidationTypes";
+// import { MessageValidation } from "../../components/Config/MensagerValidation";
+// import { TextValidator } from 'react-material-ui-form-validator';
+// import InputAdornment from '@mui/material/InputAdornment';
+// import { IconButton } from "@mui/material";
+
+import { useAuth } from "../../components/hooks/auth";
 import { ButtonComponent } from "../../components/ButtonComponent";
-import { ValidationTypes } from "../../components/Config/ValidationTypes";
-import { MessageValidation } from "../../components/Config/MensagerValidation";
-import { TextValidator } from 'react-material-ui-form-validator';
-import InputAdornment from '@mui/material/InputAdornment';
-import { IconButton } from "@mui/material";
-import VisibilityIcon from '@mui/icons-material/Visibility';
-import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 
 import { 
   Container, 
@@ -21,26 +19,13 @@ import {
   Form,
   FormTitle,  
 } from "./styles";
+import { Input } from "../../components/InputComponent";
 
-interface IDados{
-  i_Senha: string; 
-  i_Email: string;
-}
 
 const Signin: React.FC = () => {
-  const formSb = useRef(null);
-  const [dados, setDados] = useState<IDados>({
-    i_Senha: '',   
-    i_Email: '',
-  });
-  const [hiddenSenha, setHiddenSenha] = useState(true);
-
-  const handleChange = ((e: ChangeEvent<HTMLInputElement>) => {
-    setDados({
-      ...dados,
-      [e.target.name]: e.target.value
-    });
-  })
+  const { signIn } = useAuth(); 
+  const [email, setEmail] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
 
   return (
     <Container>  
@@ -50,63 +35,26 @@ const Signin: React.FC = () => {
       </Header>
 
       <Form 
-        onSubmit={() => {}}
+        onSubmit={() => signIn(email, password)}
       >
         <FormTitle>Entrar</FormTitle>
 
-        <ValidatorForm
-          ref={formSb}
-          onError={errors => console.log(errors)}
-          onSubmit={() => {}}
-        >
+        <Input  
+          type="email"
+          placeholder="e-mail"          
+          onChange={(e) => setEmail(e.target.value)} 
+          required              
+        />              
 
-          <TextInput                                                           
-              name="i_Email"
-              label="E-mail"
-              value={dados.i_Email}
-              validators={[ValidationTypes.Required]}
-              errorMessages={[MessageValidation.Required]}           
-              type="text"
-              onChange={handleChange}
-          />
-
-            <TextValidator
-              name="i_Senha"
-              label="Senha"
-              variant="outlined"
-              fullWidth
-              onChange={handleChange}
-              value={dados.i_Senha}
-              validators={[
-                ValidationTypes.Required,
-                ValidationTypes.ValidateLenght,
-                ValidationTypes.ValidateNumber,
-                ValidationTypes.ValidateCase
-              ]}                      
-              errorMessages={[
-                MessageValidation.Required,
-                MessageValidation.PasswordLenghtInvalid,
-                MessageValidation.PasswordNumberInvalid,
-                MessageValidation.PasswordCaseInvalid
-              ]}
-              type={hiddenSenha ? "password" : "text"}   
-              InputProps={{
-                endAdornment: (                          
-                  <InputAdornment position="end">
-                  <IconButton                    
-                    onClick={() => setHiddenSenha(!hiddenSenha)}                            
-                  >
-                    {hiddenSenha ? <VisibilityOff /> : <Visibility />}
-                    </IconButton>
-                  </InputAdornment>                 
-                                                                                                      
-                ),
-              }}
-            />  
-        </ValidatorForm>
+        <Input 
+          type="password"
+          placeholder="senha"
+          required
+          onChange={(e) => setPassword(e.target.value)}
+        />                 
 
         <ButtonComponent 
-          type="submit"
+          type="submit"          
         >
           Acessar
         </ButtonComponent>
@@ -115,4 +63,4 @@ const Signin: React.FC = () => {
   );
 }
 
-export { Signin }
+export { Signin };
