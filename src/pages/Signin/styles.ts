@@ -30,7 +30,7 @@ const Title = styled.h2`
 `;
 
 const Form = styled.form`  
-    width: 350px;
+    width: 300px;
     height: 350px;
 
     padding: 1.87rem;

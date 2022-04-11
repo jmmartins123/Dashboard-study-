@@ -16,14 +16,36 @@ const Container = styled.div`
     border-radius: 0.43rem;
 
     display: flex;
+
+    @media(max-width: 770px){
+        display: flex;
+        width: 100%;
+    }
+
+    @media(max-width: 420px){
+      padding: 1rem;
+      margin-bottom: 0.45rem;
+    }
 `;
 
 const SideLeft = styled.aside`    
     padding: 1.87rem 1.25rem;
+
+    @media(max-width: 1345px){      
+      margin-bottom: 0.45rem;
+    }
+
+    @media(max-width: 420px){    
+        padding: 0  0.31rem;
+    }
 `;
 
 const Title = styled.h2`
     margin-bottom: 1.25rem;
+
+    @media(max-width: 1345px){
+      margin-top: 1.1rem;
+    }    
 `;
 
 const LegendContainer = styled.ul`

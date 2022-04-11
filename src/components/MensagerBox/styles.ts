@@ -15,23 +15,52 @@ const Container = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    
+    @media(max-width: 770px){
+        width: 100%;        
+        height: auto;
+    };
+   
 `;
 
-const Header = styled.header``;
+const Header = styled.header`
+   
+`;
 
-const Title = styled.h1``;
+const Title = styled.h1`
+    @media(max-width: 770px){
+     font-size: 1.5rem;     
+    }
+`;
 
 const Image = styled.img`
     width: 2.18rem;
     margin-left: 0.8rem;
+
+    @media(max-width: 770px){
+     height: 1.25rem;
+     width: 1.25rem;
+    }
 `;
 
 const Text = styled.p`
-    font-size: 1.1rem;    
+    font-size: 1.1rem;  
+    
+    @media(max-width: 770px){
+        font-size: 0.87rem;
+        margin-top: 2rem;            
+    }   
+
+    @media(max-width: 420px){
+        margin-bottom: 1rem;
+    }
 `;
 
 const Footer = styled.footer`
-    font-weight: 300;
+     @media(max-width: 770px){
+        font-size: 0.87rem;  
+        margin-top: 1rem;        
+    }
 `;
 
 

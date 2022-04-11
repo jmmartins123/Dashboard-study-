@@ -18,11 +18,18 @@ const Container = styled.div`
     
     display: flex;
 
+    @media(max-width: 1200px){
+        display: flex;
+        flex-direction: column;
+
+        width: 100%;
+        height: 485px;
+    }
 `;
 
 const SideLeft = styled.aside`    
     display: flex;
-    flex-direction: column;
+    flex-direction: column;        
 `;
 
 const Title = styled.h2`
@@ -30,6 +37,7 @@ const Title = styled.h2`
 
     margin-left: 0.2rem;
     margin-bottom: 1.4rem;
+   
 `;
 
 const SideRight = styled.main`    
@@ -39,6 +47,10 @@ const SideRight = styled.main`
 
     display: flex;
     justify-content: center;
+
+    @media(max-width: 1200px){
+        width: 100%;
+    }
 `;
 
 const LegendContainer = styled.ul`
@@ -59,7 +71,7 @@ const LegendContainer = styled.ul`
     ::-webkit-scrollbar-thumb{
         background-color: ${props => props.theme.colors.secondary};
         border-radius: 0.8rem;
-    }  
+    }     
 `;
 
 const Legend = styled.li`

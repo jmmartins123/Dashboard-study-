@@ -8,7 +8,7 @@ const Routes:React.FC = () => {
     const { logged } = useAuth();
     return (        
         <BrowserRouter>
-            { logged ? <AppRoutes /> : <Auth />}
+            { logged ? <AppRoutes /> : <Auth />}            
         </BrowserRouter>
     );
 }

@@ -27,17 +27,28 @@ const Title = styled.h2`
     margin-bottom: 1.25rem;
 
     padding-left: 1.1rem;  
+        
 `;
 
 const ChartContainer = styled.div`    
-    flex: 1;        
+    flex: 1;  
+    
+    @media(max-width: 420px){        
+        width: 100%;
+    }
 `;
             
 const Header = styled.header`
     width: 100%;
 
     display: flex;
-    justify-content: space-between;    
+    justify-content: space-between; 
+    
+    @media(max-width: 770px){
+        display: block;
+        width: 100%;
+    }
+        
 `;
 
 const LegendContainer = styled.ul`
@@ -47,6 +58,11 @@ const LegendContainer = styled.ul`
     gap: 1.1rem;
 
     margin-right: 2rem;
+
+    @media(max-width: 770px){
+        margin-bottom: 1rem;
+    }
+   
 `;
 
 const LegendItem = styled.li`   
@@ -62,6 +78,11 @@ const Card = styled.div<IColorProps>`
     padding: 1rem;
 
     border-radius: 0.3rem;
+
+    @media(max-width: 1280px){
+        margin-left: 1rem;
+        margin-right: 0.7rem;
+    }
 
 `;
 

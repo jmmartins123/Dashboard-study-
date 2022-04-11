@@ -6,6 +6,7 @@ import {
     Container,
     Title,
     Money,
+    Prefixed,
     Small,
     Image
 } from "./styles";
@@ -48,9 +49,9 @@ const CardResume: React.FC<ICardResume> = ({
         >
             <Title>{title}</Title>
             <Money>
+                <Prefixed>R$ </Prefixed>
                 <Countup 
-                   end={amount}  //quando parar
-                   prefix={"R$ "} //o que vem antes do valor
+                   end={amount}  //quando parar                  
                    separator="." //o que usar para separar os números
                    decimal="," //o que usar para separar casas decimais
                    decimals={2} //quantas casas decimais podem aparecer             
